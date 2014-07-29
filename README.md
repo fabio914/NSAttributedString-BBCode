@@ -3,7 +3,7 @@ NSAttributedString-BBCode
 
 Subset of BBCode to generate NSAttributedStrings.
 
->Use Example:
+>Usage Example:
 
 ```
 #import "NSAttributedString+bbCode.h"
@@ -36,6 +36,6 @@ Subset of BBCode to generate NSAttributedStrings.
 
 >Supported Tags:
 
- - Underline: [u][/u]
- - Font: [font name="..." size="..."][/font]
- - Color: [color hex="..."][/color]
+ - Underline: ``` [u][/u] ```
+ - Font: ``` [font name="..." size="..."][/font] ```
+ - Color: ``` [color hex="..."][/color] ```
