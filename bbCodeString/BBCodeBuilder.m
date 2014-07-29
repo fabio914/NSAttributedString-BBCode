@@ -43,6 +43,16 @@ typedef enum {
     return [builder attributedString];
 }
 
++ (NSAttributedString *)buildAttributedStringFromString:(NSString *)string delegate:(id<NSAttributedStringBBCodeDelegate>)delegate {
+    
+    BBCodeBuilder * builder = [[[self alloc] initWithString:string] autorelease];
+    
+    [builder setDelegate:delegate];
+    
+    return [builder attributedString];
+}
+
+
 - (id)initWithString:(NSString *)string {
     
     if(self = [super init]) {
@@ -92,7 +102,10 @@ typedef enum {
         return BBCodeBuilderTagColor;
     }
     
-    @throw [NSException exceptionWithName:@"Invalid tag" reason:[NSString stringWithFormat:@"Invalid tag \'%@\'.", tagString] userInfo:nil];
+    if(!self.delegate) {
+    
+        @throw [NSException exceptionWithName:@"Invalid tag" reason:[NSString stringWithFormat:@"Invalid tag \'%@\'.", tagString] userInfo:nil];
+    }
     
     return tag;
 }
@@ -195,6 +208,15 @@ typedef enum {
             [current setObject:color forKey:NSForegroundColorAttributeName];
         }
         
+        /* Custom tag... */
+        else {
+            
+            if([self.delegate respondsToSelector:@selector(attributesForTag:params:previous:)]) {
+                
+                current = [NSMutableDictionary dictionaryWithDictionary:[self.delegate attributesForTag:nodeObject.tag params:nodeObject.params previous:[_contextStack top]]];
+            }
+        }
+        
         [_contextStack push:current];
         
         for(id nd in nodeObject.nodes) {
@@ -210,6 +232,7 @@ typedef enum {
 
 - (void)dealloc {
     
+    self.delegate = nil;
     [_mutableString release];
     [_root release];
     [_contextStack release];

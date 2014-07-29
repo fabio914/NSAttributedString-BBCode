@@ -25,4 +25,9 @@
     return [BBCodeBuilder buildAttributedStringFromString:bbCodeString];
 }
 
++ (NSAttributedString *)attributedStringWithBBCode:(NSString *)bbCodeString delegate:(id<NSAttributedStringBBCodeDelegate>)delegate {
+    
+    return [BBCodeBuilder buildAttributedStringFromString:bbCodeString delegate:delegate];
+}
+
 @end

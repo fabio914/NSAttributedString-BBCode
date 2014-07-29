@@ -33,7 +33,20 @@
 - (IBAction)sendString:(id)sender {
     
     [self.textField resignFirstResponder];
-    [self.testLabel setAttributedText:[NSAttributedString attributedStringWithBBCode:self.textField.text]];
+    [self.testLabel setAttributedText:[NSAttributedString attributedStringWithBBCode:self.textField.text delegate:self]];
+}
+
+- (NSDictionary *)attributesForTag:(NSString *)tag params:(NSDictionary *)params previous:(NSDictionary *)attributes {
+    
+    NSMutableDictionary * result = [NSMutableDictionary dictionaryWithDictionary:attributes];
+    
+    /* [code][/code] */
+    if([tag isEqualToString:@"code"]) {
+        
+        [result setObject:[UIFont fontWithName:@"Courier New" size:11.f] forKey:NSFontAttributeName];
+    }
+    
+    return result;
 }
 
 - (void)dealloc {

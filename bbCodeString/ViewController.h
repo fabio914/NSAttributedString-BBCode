@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSAttributedStringBBCodeDelegate.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<NSAttributedStringBBCodeDelegate>
 
 @end

@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSAttributedStringBBCodeDelegate.h"
 
 @interface NSAttributedString (bbCode)
 
 + (NSAttributedString *)attributedStringWithBBCode:(NSString *)bbCodeString;
++ (NSAttributedString *)attributedStringWithBBCode:(NSString *)bbCodeString delegate:(id<NSAttributedStringBBCodeDelegate>)delegate;
+
 
 @end
