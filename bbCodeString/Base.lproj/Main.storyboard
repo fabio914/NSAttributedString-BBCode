@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -15,11 +16,58 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bf-te-ii0">
+                                <rect key="frame" x="0.0" y="20" width="320" height="171"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="27N-a1-tTh">
+                                <rect key="frame" x="20" y="199" width="242" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YyU-rb-lhn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0l0-aD-HWF">
+                                <rect key="frame" x="270" y="199" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="gFY-NP-moj"/>
+                                </constraints>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendString:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HtE-DG-ITq"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="27N-a1-tTh" secondAttribute="bottom" constant="339" id="8YC-p4-RxS"/>
+                            <constraint firstItem="0l0-aD-HWF" firstAttribute="leading" secondItem="27N-a1-tTh" secondAttribute="trailing" constant="8" id="9S6-dG-sax"/>
+                            <constraint firstAttribute="trailing" secondItem="0l0-aD-HWF" secondAttribute="trailing" constant="20" id="FJv-VP-eV0"/>
+                            <constraint firstItem="27N-a1-tTh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="OdZ-di-xkg"/>
+                            <constraint firstItem="0l0-aD-HWF" firstAttribute="top" secondItem="1bf-te-ii0" secondAttribute="bottom" constant="8" symbolic="YES" id="PFq-VD-RhI"/>
+                            <constraint firstItem="1bf-te-ii0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="QWv-SH-6aF"/>
+                            <constraint firstAttribute="trailing" secondItem="1bf-te-ii0" secondAttribute="trailing" id="bAM-bF-PTP"/>
+                            <constraint firstItem="1bf-te-ii0" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" symbolic="YES" id="hfh-aN-Jk4"/>
+                            <constraint firstItem="27N-a1-tTh" firstAttribute="top" secondItem="1bf-te-ii0" secondAttribute="bottom" constant="8" id="hgi-x7-Tg6"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="testLabel" destination="1bf-te-ii0" id="bbT-VJ-s8N"/>
+                        <outlet property="textField" destination="27N-a1-tTh" id="r13-bZ-8XP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-188" y="111"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

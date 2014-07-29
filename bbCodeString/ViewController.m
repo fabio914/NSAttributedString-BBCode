@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "NSAttributedString+bbCode.h"
 
 @interface ViewController ()
+
+@property (retain, nonatomic) IBOutlet UILabel * testLabel;
+@property (retain, nonatomic) IBOutlet UITextField * textField;
 
 @end
 
@@ -24,6 +28,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)sendString:(id)sender {
+    
+    [self.textField resignFirstResponder];
+    [self.testLabel setAttributedText:[NSAttributedString attributedStringWithBBCode:self.textField.text]];
+}
+
+- (void)dealloc {
+
+    [_testLabel release];
+    [_textField release];
+    [super dealloc];
 }
 
 @end
